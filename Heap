@@ -1,0 +1,36 @@
+HEAP:
+0     : Player 1 - Card 1
+1     : Card 2
+2     : Card 3
+3     : Card 4
+4     : Card 5
+10    : Player 2 - Card 1
+...
+100   : # Of Players
+101   : SR HEAP1: Flush Suit | 3OfAKindCurrentValue
+102   : SR HEAP2: 3OfAKindCurrentCount
+...
+200   : HandValue1
+...
+209   : HandValue10
+
+LABELS:
+0     : Print "Enter number of players"
+1     : SR Get#OfPlayers
+2     : SR EnterPlayerInfo
+3     : Enter Player Cards
+4     : Print "Player i please enter your cards:"
+5     : SR EnterCards
+6     : Enter Card
+7     : End Enter Cards
+8     : End Enter Player Info
+9     : SR Calculate Hands
+10    : Calculate Player Hand Loop
+11    : End Calculate Hands
+12    : SR Check Flush
+13    : SR GetSuit
+14    : CheckFlush - CheckLoop
+15    : Check Flush - Success
+16    : SR Check Three Of A Kind
+17    : ThreeOfAKind - Outer Loop
+18    : ThreeOfAKind - Inner Loop
