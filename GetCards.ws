@@ -342,7 +342,19 @@ DROP
  	 	  CALLSR_4
    		  	 	PUSH_101
 	
-	 READC   	PUSH_1
+	 READC
+ 	 	  		CALLSR_19
+   		  		 PUSH_102
+	
+	 READC   		  	 	PUSH_101
+			RETRIEVE
+ 	 	 	  CALLSR_20
+   		  		 PUSH_102
+			RETRIEVE
+ 	 		 	 CALLSR_26
+   		 	PUSH_13
+	  
+MUL	   ADD		 STORE   	PUSH_1
 	   ADD 
  DUP   	 	PUSH_5
 	 		MOD
@@ -356,3 +368,106 @@ DROP
 
 DISCARD
 	###ENDROUTINE###
+###CharacterToCardValue###
+   	 	  LABEL_20
+ 
+ DUP     	     	PUSH_A
+	  	SUB
+	  	 	 	JUMPIFO_21
+ 
+ DUP    	  	 		PUSH_K
+	  	SUB
+	  	 		 JUMPIFO_22
+ 
+ DUP    	 	   	PUSH_Q
+	  	SUB
+	  	 			JUMPIFO_23
+ 
+ DUP    	  	 	 PUSH_J
+	  	SUB
+	  		   JUMPIFO_24
+ 
+ DUP     		   	PUSH_10
+	  	SUB
+	  		  	JUMPIFO_25
+   		  	 PUSH_50
+	  	SUB 
+	SWAP 
+
+DROP
+	
+ENDSR
+   	 	 	LABEL_21
+ 
+
+DROP   		  PUSH_12
+
+	
+ENDSR
+   	 		 LABEL_22
+ 
+
+DROP   	 		PUSH_11
+
+	
+ENDSR
+   	 			LABEL_23
+ 
+
+DROP   	 	 PUSH_10
+
+	
+ENDSR
+   		   LABEL_24
+ 
+
+DROP   	  	PUSH_9
+
+	
+ENDSR
+   		  	LABEL_25
+ 
+
+DROP   	   PUSH_8
+
+	###END_SUBROUTINE###
+###STARTROUTINE_26_ConvertCharacterToSuit###
+   		 	 LABEL_26
+ 
+ DUP    	    		PUSH_C
+	  	SUB
+	  		 		JUMPIF0_27
+ 
+ DUP    	  	   PUSH_H
+	  	SUB
+	  			  JUMPIF0_28
+ 
+ DUP    	 	  		PUSH_S
+	  	SUB
+	  			 	JUMPIF0_29
+ 
+
+DROP   		PUSH_3
+
+	
+ENDSR
+   		 		LABEL_27
+ 
+
+DROP    PUSH_0
+
+	
+ENDSR
+   			  LABEL_28
+ 
+
+DROP   	PUSH_1
+
+	
+ENDSR
+   			 	LABEL_29
+ 
+
+DROP   	 PUSH_2
+
+	##END_ROUTINE###
