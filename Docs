@@ -199,7 +199,13 @@ ENDSR
 SR 9 Calculate Hands
 	PUSH 0
 	LABEL 10
-		CALL SR 16 (CheckFlush)	
+		DUP
+		PUSH 200
+		ADD
+		PUSH 0
+		STORE
+		CALL SR 36 (Check2OfAKind)
+		CALL SR 16 (Check3OfAKind)
 		CALL SR 12 (CheckFlush)	
 		PUSH 1
 		ADD
@@ -338,13 +344,83 @@ SR 32 GetValueFromCard
 	MOD
 ENDSR
 
-SR 33 GetPairCountFromArgs
-	PUSH 150
-	RETRIEVE
+SR 36 Check2OfAKind
+	DUP (currentplayer)
+	PUSH 10
+	MULTIPLY (10 * currentplayer)
+	LABEL 41
+		DUP
+		RETRIEVE
+		CALL SR 32 (getvalue)
+		PUSH 101
+		SWAP
+		STORE (put current value in heap)
+		PUSH 102
+		PUSH 1
+		STORE
+		DUP
+		
+		LABEL 37
+			PUSH 1
+			ADD (nextindex)
+			
+			//Are all cards checked?
+			DUP
+			PUSH 5
+			MOD
+			JUMPIF0 38
+			
+			DUP
+			RETRIEVE
+			CALL SR 32 (getvalue)
+			PUSH 101
+			RETRIEVE
+			SUB
+			JUMPIF0 39
+			JUMP 37
+			LABEL 39
+				PUSH 102
+				RETRIEVE
+				PUSH 1
+				ADD
+				DUP
+				PUSH 2
+				SUB
+				JUMPIF0 40
+				PUSH 102
+				SWAP
+				STORE
+				JUMP 37
+			LABEL 40
+				DROP
+				DROP
+				DROP
+				DUP (currentplayer)
+				PUSH 200
+				ADD
+				PUSH 1 (2ofakindvalue)
+				STORE (flushvalue in currentplayerhandvalue)
+				ENDSR
+		LABEL 38
+			DROP
+			PUSH 1
+			ADD
+			DUP
+			PUSH 4
+			MOD
+			JUMPIF0 42
+			JUMP 41
+			LABEL 42
+			DROP
+			ENDSR
 ENDSR
 
-4
+
+
+5
 2S 3S AH AC AD
 6D 7D JD QD 2D
 7C 4D 4H 7S 7H
 8H 9S JS KS 8C
+KS 9S JS 8H 8C
+4S 9C JS KS 3C
