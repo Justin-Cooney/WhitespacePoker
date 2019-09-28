@@ -19,7 +19,7 @@ LABELS:
 1     : SR Get#OfPlayers
 2     : SR EnterPlayerInfo
 3     : Enter Player Cards
-4     : Print "Player i please enter your cards:"
+4     : Print "Player i please enter a value for card #i"
 5     : SR EnterCards
 6     : Enter Card
 7     : End Enter Cards
@@ -34,3 +34,8 @@ LABELS:
 16    : SR Check Three Of A Kind
 17    : ThreeOfAKind - Outer Loop
 18    : ThreeOfAKind - Inner Loop
+19    : SR Print "Player i please enter a suit for card #i"
+20    : SR Character to Card Value
+21-25 : SR Character to Card Value labels
+26    : SR Character to suit
+27-29 : Character to sui labels
