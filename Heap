@@ -10,6 +10,8 @@ HEAP:
 101   : SR HEAP1: Flush Suit | 3OfAKindCurrentValue
 102   : SR HEAP2: 3OfAKindCurrentCount
 ...
+150   : SR Arg
+...
 200   : HandValue1
 ...
 209   : HandValue10
@@ -38,4 +40,11 @@ LABELS:
 20    : SR Character to Card Value
 21-25 : SR Character to Card Value labels
 26    : SR Character to suit
-27-29 : Character to sui labels
+27-29 : Character to suit labels
+30    : SR enter cards 0 flush
+31    : SR enter cards labels
+32    : SR GetValueFromCard
+33    : Check3OfAKind label
+34    : Check3OfAKind label
+35    : Check3OfAKind label
+36-42    : SR check2ofakind
