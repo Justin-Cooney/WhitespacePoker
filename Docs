@@ -1,3 +1,9 @@
+0-12  C
+13-25 H
+26-38 S
+39-51 D
+
+
 ############################################
 CALL SR 1 - Enter # of Players
 CALL SR 2 - Get Player Info
@@ -14,7 +20,7 @@ ENDSR
 SR 2 EnterPlayerInfo
 	PUSH 0
 	LABEL 3 EnterPlayerCards
-		CALL SR 5
+		CALL SR 5 (EnterCards)
 		PUSH 1
 		ADD
 		DUP
@@ -24,10 +30,12 @@ SR 2 EnterPlayerInfo
 		JUMPIF0 8
 		JUMP 3
 	LABEL 8
-	DISCARD
+	DROP
 ENDSR
 
-SR 4 Print "Player i, please enter the value of card #1:"
+
+
+SR 4 Print "Player i, please enter your cards:"
 	PRINT "Player "
 	DUP
 	PUSH 10
@@ -35,51 +43,42 @@ SR 4 Print "Player i, please enter the value of card #1:"
 	PUSH 1
 	ADD
 	PRINT #
-	PRINT ", please enter the value of card #"
-	DUP
-	PUSH 10
-	MOD
-	PUSH 1
-	ADD
-	PRINT #
-	PRINT " (2-10,J,Q,K,A):"
+	PRINT ", please enter your cards:"
 ENDSR
 
-SR 19 Print "suit"
-	PRINT "Player "
-	DUP
-	PUSH 10
-	DIV
-	PUSH 1
-	ADD
-	PRINT #
-	PRINT ", please enter a suit for card #"
-	DUP
-	PUSH 10
-	MOD
-	PUSH 1
-	ADD
-	PRINT #
-	PRINT " (C,H,S,D):"
+SR 19 Print "Enter cards seperated by spaces. Each should have a value (2-10, J, Q, K, A) and a suite (C, H, S, D). Example: (2C AH 10D QS 5C)"
 ENDSR
 
 SR 5 EnterCards
 	DUP
+	DUP
 	PUSH 10
 	MULTIPLY (10 * currentplayer)
+	CALL SR 4 (Print prompt)
 	LABEL 6
 		DUP (heapindex)
 		
 		//Read value
-		CALL SR 4
 		PUSH 101
 		READC
 		
+		//Flush 0 from 10
+		PUSH 101
+		RETRIEVE
+		PUSH 1 (00110001)
+		SUB
+		JUMPIF0 30
+		JUMP 31
+		LABEL 30
+		PUSH 102
+		READC	
+		LABEL 31
+		
 		//Read suit
-		CALL SR 5
 		PUSH 102
 		READC
 		
+		 
 		PUSH 101
 		RETRIEVE
 		CALL SR 20
@@ -91,6 +90,9 @@ SR 5 EnterCards
 		ADD
 		STORE
 		
+		PUSH101
+		READC (flush space)
+		
 		PUSH 1
 		ADD (heapindex + 1)
 		DUP
@@ -99,7 +101,8 @@ SR 5 EnterCards
 		JUMPIF0 7
 		JUMP 6
 	LABEL 7
-	DISCARD
+	DROP
+	DROP
 ENDSR
 
 SR 20 Character to card value
@@ -119,7 +122,7 @@ SR 20 Character to card value
 	JUMPIF0 23
 	
 	DUP
-	PUSH 01001010 (Q)
+	PUSH 01001010 (J)
 	SUB
 	JUMPIF0 24
 	
@@ -130,8 +133,6 @@ SR 20 Character to card value
 	
 	PUSH 50
 	SUB
-	SWAP
-	DROP
 	ENDSR
 	
 	LABEL 21
@@ -198,7 +199,8 @@ ENDSR
 SR 9 Calculate Hands
 	PUSH 0
 	LABEL 10
-		CALL SR 12 (CheckFlush)
+		CALL SR 16 (CheckFlush)	
+		CALL SR 12 (CheckFlush)	
 		PUSH 1
 		ADD
 		DUP
@@ -264,16 +266,18 @@ SR 16 Check3OfAKind
 	PUSH 10
 	MULTIPLY (10 * currentplayer)
 	LABEL 17
-		CALL SR 20 (getvalue)
+		DUP
+		RETRIEVE
+		CALL SR 32 (getvalue)
 		PUSH 101
 		SWAP
 		STORE (put current value in heap)
 		PUSH 102
 		PUSH 1
 		STORE
+		DUP
 		
 		LABEL 18
-			DUP (heapindexofcurrentcard)
 			PUSH 1
 			ADD (nextindex)
 			
@@ -285,13 +289,13 @@ SR 16 Check3OfAKind
 			
 			DUP
 			RETRIEVE
-			CALL SR 20 (getvalue)
+			CALL SR 32 (getvalue)
 			PUSH 101
 			RETRIEVE
 			SUB
-			JUMPIF0 20
+			JUMPIF0 33
 			JUMP 18
-			LABEL 20
+			LABEL 33
 				PUSH 102
 				RETRIEVE
 				PUSH 1
@@ -299,12 +303,13 @@ SR 16 Check3OfAKind
 				DUP
 				PUSH 3
 				SUB
-				JUMPIF0 21
+				JUMPIF0 34
 				PUSH 102
 				SWAP
 				STORE
 				JUMP 18
-			LABEL 21
+			LABEL 34
+				DROP
 				DROP
 				DROP
 				DUP (currentplayer)
@@ -320,7 +325,26 @@ SR 16 Check3OfAKind
 			DUP
 			PUSH 3
 			MOD
-			JUMPIF0 17
+			JUMPIF0 35
+			JUMP 17
+			LABEL 35
 			DROP
 			ENDSR
 ENDSR
+
+SR 32 GetValueFromCard
+	DUP
+	PUSH 13
+	MOD
+ENDSR
+
+SR 33 GetPairCountFromArgs
+	PUSH 150
+	RETRIEVE
+ENDSR
+
+4
+2S 3S AH AC AD
+6D 7D JD QD 2D
+7C 4D 4H 7S 7H
+8H 9S JS KS 8C
