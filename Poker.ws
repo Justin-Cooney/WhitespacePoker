@@ -75,8 +75,6 @@
 
    		LABEL_3
 
- 	 	  CALLSR_4_PrintPleaseEnterCards
-
  	 	 	CALLSSR_5_EnterCards
    	PUSH_1
 	   ADD 
@@ -92,7 +90,7 @@
 
 DROP
 	###ENDROUTINE###
-###STARTROUTINE_4_PrintPleaseEnterCards###
+###STARTROUTINE_4_PrintPleaseEnterCardValue###
    	  LABEL_4
     	 	    
 	
@@ -109,13 +107,14 @@ DROP
   r     	     
 	
   _ 
- dup   	PUSH_1
+ DUP   	 	 PUSH_10
+	 	 DIV   	PUSH_1
 	   ADD	
  	print#     	     
 	
-  _    	 	    
+  _    			    
 	
-  P    		 		  
+  p    		 		  
 	
   l   		  	 	
 	
@@ -168,13 +167,42 @@ DROP
 ###STARTROUTINE_5_EnterCards###
    	 	LABEL_5
  
+ DUP 
  DUP   	 	 PUSH_10
-	  MULTIPLY
+	  
+MULTIPLY
+ 	 	  CALLSR_4
 
    		 LABEL_6
  
- DUP	
-		READ#   	PUSH_1
+ DUP   		  	 	PUSH_101
+	
+	 READC   		  	 	PUSH_101
+			RETRIEVE     		   	PUSH_1
+	  	SUB
+	`  	`	`		 JUMPIF0_30
+
+ 
+ 					JUMP_30
+
+   				 LABEL_30
+   	`	  		 PUSH_102
+	
+	 READC
+   					LABEL_31
+   		  		 PUSH_102
+	
+	 READC   		  	 	PUSH_101
+			RETRIEVE
+ 	 	 	  CALLSR_20
+   		  		 PUSH_102
+			RETRIEVE
+ 	 		 	 CALLSR_26
+   		 	PUSH_13
+	  
+MUL	   ADD		 STORE   		  	 	PUSH_101
+	
+	 READC   	PUSH_1
 	   ADD 
  DUP   	 	PUSH_5
 	 		MOD
@@ -186,13 +214,117 @@ DROP
    			LABEL_7
  
 
-DISCARD
+DROP 
+
+DROP
 	###ENDROUTINE###
+###CharacterToCardValue###
+   	 	  LABEL_20
+ 
+ DUP     	     	PUSH_A
+	  	SUB
+	  	 	 	JUMPIFO_21
+ 
+ DUP    	  	 		PUSH_K
+	  	SUB
+	  	 		 JUMPIFO_22
+ 
+ DUP    	 	   	PUSH_Q
+	  	SUB
+	  	 			JUMPIFO_23
+ 
+ DUP    	  	 	 PUSH_J
+	  	SUB
+	  		   JUMPIFO_24
+ 
+ DUP     		   	PUSH_10
+	  	SUB
+	  		  	JUMPIFO_25
+   		  	 PUSH_50
+	  	SUB
+	
+ENDSR
+   	 	 	LABEL_21
+ 
+
+DROP   		  PUSH_12
+
+	
+ENDSR
+   	 		 LABEL_22
+ 
+
+DROP   	 		PUSH_11
+
+	
+ENDSR
+   	 			LABEL_23
+ 
+
+DROP   	 	 PUSH_10
+
+	
+ENDSR
+   		   LABEL_24
+ 
+
+DROP   	  	PUSH_9
+
+	
+ENDSR
+   		  	LABEL_25
+ 
+
+DROP   	   PUSH_8
+
+	###END_SUBROUTINE###
+###STARTROUTINE_26_ConvertCharacterToSuit###
+   		 	 LABEL_26
+ 
+ DUP    	    		PUSH_C
+	  	SUB
+	  		 		JUMPIF0_27
+ 
+ DUP    	  	   PUSH_H
+	  	SUB
+	  			  JUMPIF0_28
+ 
+ DUP    	 	  		PUSH_S
+	  	SUB
+	  			 	JUMPIF0_29
+ 
+
+DROP   		PUSH_3
+
+	
+ENDSR
+   		 		LABEL_27
+ 
+
+DROP    PUSH_0
+
+	
+ENDSR
+   			  LABEL_28
+ 
+
+DROP   	PUSH_1
+
+	
+ENDSR
+   			 	LABEL_29
+ 
+
+DROP   	 PUSH_2
+
+	##END_ROUTINE###
 ###STARTROUTINE_9_CalculateHands###
    	  	Label_9
     Push_0
 
    	 	 Label_10
+
+ 	 	    CALLSR_16
 
  	 		  CALLSR_12
    	PUSH_1
@@ -256,3 +388,82 @@ DROP
 		 STORE
 	###ENDROUTINE###
 ###STARTROUTINE_16_Check3OfAKind###
+   	    LABEL_16
+ 
+ DUP   	 	 PUSH_10
+	  
+MUL
+   	   	LABEL_17
+ 
+ DUP			RETRIEVE
+ 	 	     CALLSR_32
+   		  	 	PUSH_101
+ 
+	SWAP		 STORE   		  		 PUSH_102
+   	PUSH_1
+		 STORE 
+ DUO
+   	  	 LABEL_18
+   	PUSH_1
+	   ADD 
+ DUP   	 	PUSH_5
+	 		MOD
+	  	  		JUMPIF0_19
+ 
+ DUP			RETRIEVE
+ 	 	     CALLSR_32
+   		  	 	PUSH_101
+			RETRIEVE	  	SUB
+	  	    	JUMPIF0_33
+
+ 
+ 	  	 JUMP_18
+
+   	    	LABEL_33
+   		  		 PUSH_10
+			RETRIEVE   	PUSH_1
+	   ADD 
+ DUP   		PUSH_3
+	  	SUB
+	  	   	 JUMPIF0_34
+   		  		 PUSH_102
+ 
+	SWAP		 STORE
+ 
+ 	  	 JUMP_18
+
+   	   	 LABEL_34
+ 
+
+DROP 
+
+DROP 
+
+DROP 
+ DUP   		  	   PUSH_200
+	   ADD   		PUSH_3
+		 STORE
+	
+ENDSR
+   	  		LABEL_19
+ 
+
+DROP   	PUSH_1
+	   ADD 
+ DUP   		PUSH_3
+	 		MOD
+	  	   		JUMPIF0_35
+
+ 
+ 	   	JUMP_17
+
+   	   		LABEL_35
+ 
+
+
+	###END_SUBROUTINE###
+###STARTROUTINE_32_GetValueFromCard###
+   	     label_32
+   		 	PUSH_13
+	 		MOD
+	###END_SUBROUTINE###
