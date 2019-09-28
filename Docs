@@ -1,90 +1,4 @@
-----Read cards for player 1----
-
-Heap:
-0 - P1 card 1
-1 - P1 card 2
-2 - P1 card 3
-3 - P1 card 4
-4 - P1 card 5
-10 - P2 card 1
-11 - P2 card 2
-12 - P2 card 3
-13 - P2 card 4
-14 - P2 card 5
-20 - P2 card 1
-21 - P2 card 2
-22 - P2 card 3
-23 - P2 card 4
-24 - P2 card 5
-.
-.
-.
-.
-100 - Number of Players
-Output Cards:
-
-
-Algorithm:
-Print: Please enter the cards seperated by a space:
-	- Push character onto stack ..Num/
-	- Output Character on Stack -/..
-Read Cards
-	- Loop 0 - 4
-	
-
-
-4 - 0
-3 - 1
-2 - 2
-1 - 3
-0 - 4	
-
-
-Print "Enter number of players:"
-Push 100
-Read # of players into #100
-Push 100
-Retrieve #100
-Label 2 - PlayerEntryLoop
-	Dup
-	Push 100
-	Retrieve #100
-	Push 1
-	Sub
-	Sub
-	Print "Player "
-	Dup
-	Print #
-	Print " please enter your cards:"
-	?Push 1
-	?Sub
-	
-	Push 5 //NumOfCards
-	Label 0 - InputLoop
-		Push 1
-		Subtract
-		
-		//Calculate heap for card storage
-		Dup
-		Push 4
-		Swap
-		Subtract
-		
-		Read number - Card into heap
-		
-		dup
-		JumpTo 1 if 0
-		JumptTo 0
-	Label 1 - EndOfLoop
-	Drop (0)
-	dup
-	JumpTo 3 if 0
-	JumptTo 2
-Label 3 - EndOfPlayerEntry
-
-
-
-#######################################################################################
+############################################
 CALL SR 1 - Enter # of Players
 CALL SR 2 - Get Player Info
 CALL SR 9 - Calculate Hands
@@ -100,7 +14,6 @@ ENDSR
 SR 2 EnterPlayerInfo
 	PUSH 0
 	LABEL 3 EnterPlayerCards
-		CALL SR 4
 		CALL SR 5
 		PUSH 1
 		ADD
@@ -114,13 +27,40 @@ SR 2 EnterPlayerInfo
 	DISCARD
 ENDSR
 
-SR 4 Print "Player i please enter your cards:"
+SR 4 Print "Player i, please enter the value of card #1:"
 	PRINT "Player "
 	DUP
+	PUSH 10
+	DIV
 	PUSH 1
 	ADD
 	PRINT #
-	PRINT " please enter your cards:"
+	PRINT ", please enter the value of card #"
+	DUP
+	PUSH 10
+	MOD
+	PUSH 1
+	ADD
+	PRINT #
+	PRINT " (2-10,J,Q,K,A):"
+ENDSR
+
+SR 19 Print "suit"
+	PRINT "Player "
+	DUP
+	PUSH 10
+	DIV
+	PUSH 1
+	ADD
+	PRINT #
+	PRINT ", please enter a suit for card #"
+	DUP
+	PUSH 10
+	MOD
+	PUSH 1
+	ADD
+	PRINT #
+	PRINT " (C,H,S,D):"
 ENDSR
 
 SR 5 EnterCards
@@ -129,7 +69,28 @@ SR 5 EnterCards
 	MULTIPLY (10 * currentplayer)
 	LABEL 6
 		DUP (heapindex)
-		READ#
+		
+		//Read value
+		CALL SR 4
+		PUSH 101
+		READC
+		
+		//Read suit
+		CALL SR 5
+		PUSH 102
+		READC
+		
+		PUSH 101
+		RETRIEVE
+		CALL SR 20
+		PUSH 102
+		RETRIEVE
+		CALL SR 26
+		PUSH 13
+		MULTIPLY
+		ADD
+		STORE
+		
 		PUSH 1
 		ADD (heapindex + 1)
 		DUP
@@ -139,6 +100,99 @@ SR 5 EnterCards
 		JUMP 6
 	LABEL 7
 	DISCARD
+ENDSR
+
+SR 20 Character to card value
+	DUP
+	PUSH 01000001 (A)
+	SUB
+	JUMPIF0 21
+	
+	DUP
+	PUSH 01001011 (K)
+	SUB
+	JUMPIF0 22
+	
+	DUP
+	PUSH 01010001 (Q)
+	SUB
+	JUMPIF0 23
+	
+	DUP
+	PUSH 01001010 (Q)
+	SUB
+	JUMPIF0 24
+	
+	DUP
+	PUSH 00110001 (10)
+	SUB
+	JUMPIF0 25
+	
+	PUSH 50
+	SUB
+	SWAP
+	DROP
+	ENDSR
+	
+	LABEL 21
+		DROP
+		PUSH 12
+		ENDSR
+	
+	LABEL 22
+		DROP
+		PUSH 11
+		ENDSR
+		
+	LABEL 23
+		DROP
+		PUSH 10
+		ENDSR
+	
+	LABEL 24
+		DROP
+		PUSH 9
+		ENDSR
+		
+	LABEL 25
+		DROP
+		PUSH 8
+		ENDSR
+
+SR 26 Character to suit
+	DUP
+	PUSH 01000011 (C)
+	SUB
+	JUMPIF0 27
+	
+	DUP
+	PUSH 01001000 (H)
+	SUB
+	JUMPIF0 28
+	
+	DUP
+	PUSH 01010011 (S)
+	SUB
+	JUMPIF0 29
+	
+	DROP
+	PUSH 3 (D)
+	ENDSR
+	
+	LABEL 27
+		DROP
+		PUSH 0
+		ENDSR
+	
+	LABEL 28
+		DROP
+		PUSH 1
+		ENDSR
+		
+	LABEL 29
+		DROP
+		PUSH 2
+		ENDSR
 ENDSR
 
 SR 9 Calculate Hands
