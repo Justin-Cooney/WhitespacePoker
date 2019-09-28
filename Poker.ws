@@ -324,6 +324,8 @@ DROP   	 PUSH_2
 
    	 	 Label_10
 
+ 	 	  	  CALLSR_36
+
  	 	    CALLSR_16
 
  	 		  CALLSR_12
@@ -420,7 +422,7 @@ MUL
  	  	 JUMP_18
 
    	    	LABEL_33
-   		  		 PUSH_10
+   		  		 PUSH_102
 			RETRIEVE   	PUSH_1
 	   ADD 
  DUP   		PUSH_3
@@ -466,4 +468,79 @@ DROP   	PUSH_1
    	     label_32
    		 	PUSH_13
 	 		MOD
+	###END_SUBROUTINE###
+###STARTROUTINE_36_Check2OfAKind###
+   	  	  LABEL_36
+ 
+ DUP   	 	 PUSH_10
+	  
+MUL
+   	 	  	LABEL_41
+ 
+ DUP			RETRIEVE
+ 	 	     CALLSR_32
+   		  	 	PUSH_101
+ 
+	SWAP		 STORE   		  		 PUSH_102
+   	PUSH_1
+		 STORE 
+ DUP
+   	  	 	LABEL_37
+   	PUSH_1
+	   ADD 
+ DUP   	 	PUSH_5
+	 		MOD
+	  	  		 JUMPIF0_38
+ 
+ DUP			RETRIEVE
+ 	 	     CALLSR_32
+   		  	 	PUSH_101
+			RETRIEVE	  	SUB
+	  	  			JUMPIF0_39
+
+ 
+ 	  	 	JUMP_37
+
+   	  			LABEL_39
+   		  		 PUSH_102
+			RETRIEVE   	PUSH_1
+	   ADD 
+ DUP   	 PUSH_2
+	  	SUB
+	  	 	   JUMPIF0_40
+   		  		 PUSH_102
+ 
+	SWAP		 STORE
+ 
+ 	  	 	JUMP_37
+
+   	 	   LABEL_40
+ 
+
+DROP 
+
+DROP 
+
+DROP 
+ DUP   		  	   PUSH_200
+	   ADD   	 PUSH_2
+		 STORE
+	
+ENDSR
+   	  		 LABEL_38
+ 
+
+DROP   	PUSH_1
+	   ADD 
+ DUP   	  PUSH_4
+	 		MOD
+	  	 	 	 JUMPIF0_42
+
+ 
+ 	 	  	JUMP_41
+
+   	 	 	 LABEL_42
+ 
+
+
 	###END_SUBROUTINE###
