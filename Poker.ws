@@ -180,13 +180,13 @@ MULTIPLY
 	 READC   		  	 	PUSH_101
 			RETRIEVE     		   	PUSH_1
 	  	SUB
-	`  	`	`		 JUMPIF0_30
+	  				 JUMPIF0_30
 
  
  					JUMP_30
 
    				 LABEL_30
-   	`	  		 PUSH_102
+   		  		 PUSH_102
 	
 	 READC
    					LABEL_31
@@ -323,7 +323,10 @@ DROP   	 PUSH_2
     Push_0
 
    	 	 Label_10
-
+ 
+ DUP   		  	   PUSH_200
+	   ADD    PUSH_0
+		 STORE
  	 	  	  CALLSR_36
 
  	 	    CALLSR_16
@@ -523,7 +526,7 @@ DROP
 
 DROP 
  DUP   		  	   PUSH_200
-	   ADD   	 PUSH_2
+	   ADD   	PUSH_1
 		 STORE
 	
 ENDSR
