@@ -5,7 +5,7 @@ Whitespace poker is program written in whitespace that will read a round of poke
 ### Instructions
 To run the program upload or copy and paste `WhiteSpace.ws` to the whitelips IDE (https://vii5ard.github.io/whitespace/)
 
-Click the Run button in the corner to execute the program and follow the instructions show in the console.
+Click the Run button in the corner to execute the program and follow the instructions shown in the console.
 
 NOTE: Currently only up to 10 players are supported and inputs must be entered correctly. When entering cards, enter each card with a value and suit using UPPER case letters seperating each card with a space (2C AH 10D QS 5C). Additional whitespace may break the program so be careful when entering your cards.
 
