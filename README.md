@@ -17,7 +17,25 @@ Whitespace poker is still a work in progress and some features have not been imp
 * No logic exists yet for handling ties, so the program can't tell who the winner is when two players have the same value of hand (flush vs flush or high card vs high card for example). This is a WIP that will be addressed soon.
 
 ## Implementation
-The whitespace poker program was written 
+The whitespace poker program was written entirely by hand in whitespace. While the program was development an accompanying psuedocode document was maintained to help provide a better visual of the program's logic. The program makes use of a stack for performing calculations, a heap for storing values, and subroutines for segregating logic.
+
+Cards are stored throughout the program as values ranging from 0 - 52. Each interval of 13 represents one suit. For example:
+0-12  Clubs
+13-25 Hearts
+26-38 Spades
+39-51 Diamonds
+
+Within each interval the first number represents a 2 
+
+This method allows us to obtain the number of a card by modulo dividing its value by 13 and allows us to obtain the suit of card by integer dividing its value by 13. For example:
+
+0 % 13 = 0 (2)
+0 / 13 = 0 (Heart)
+
+35 % 13 = 9 (Jack)
+35 / 13 = 2 (Spade)
+
+The program will accept user input and translate it into this format, storing each card as a seperate entry in the heap. Sub- routines are then used to evulate the value of each players hand and output the winner.
 
 ### The Heap
 Whitespace poker uses a heap to track important values such as the number of players, the current cards each player has etc. See below for a list of uses for each entry in the heap:
