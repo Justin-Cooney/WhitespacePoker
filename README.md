@@ -42,7 +42,7 @@ Label Index | Usage
 8     | End SR - Enter Player Info
 9     | SR - CalculateHands
 10    | SR - CalculateHands - Calculate Player Hand Loop
-11    | End Calculate Hands
+11    | End SR - Calculate Hands
 12    | SR - CheckFlush
 13    | SR - GetSuitFromCard
 14    | SR - CheckFlush - CheckLoop
