@@ -24,6 +24,11 @@ First Header | Second Header
 300   | Winning Hand
 301   | Winning Player #
 
+First Header | Second Header
+------------ | -------------
+Content from cell 1 | Content from cell 2
+Content in the first column | Content in the second column
+
 #### Labels
 The program uses labels throughout to create sub-routines and handle flow control. See below for a list of labels and their uses:
 0     : SR - Print "Enter number of players:"
