@@ -1,4 +1,4 @@
-### Whitespace Poker
+###Whitespace Poker
 
 White**sp**ace poker is program written in whitespace that will read a round of poker hands and determine which player is the winner.
 
