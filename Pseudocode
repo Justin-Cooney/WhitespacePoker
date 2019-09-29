@@ -1,13 +1,10 @@
-0-12  C
-13-25 H
-26-38 S
-39-51 D
-
-
-############################################
-CALL SR 1 - Enter # of Players
-CALL SR 2 - Get Player Info
-CALL SR 9 - Calculate Hands
+	CALL SR 1 - Enter # of Players
+	CALL SR 53 - Print Instructions
+	CALL SR 2 - Get Player Info
+	CALL SR 9 - Calculate Hands
+	CALL SR 43 - Calculate Winner
+	CALL SR 47 - Output Winner
+ENDPROGRAM
 
 SR 0 Print "Enter number of players"
 ENDSR
@@ -44,9 +41,6 @@ SR 4 Print "Player i, please enter your cards:"
 	ADD
 	PRINT #
 	PRINT ", please enter your cards:"
-ENDSR
-
-SR 19 Print "Enter cards seperated by spaces. Each should have a value (2-10, J, Q, K, A) and a suite (C, H, S, D). Example: (2C AH 10D QS 5C)"
 ENDSR
 
 SR 5 EnterCards
@@ -92,6 +86,8 @@ SR 5 EnterCards
 		
 		PUSH101
 		READC (flush space)
+		
+		PRINT /n
 		
 		PUSH 1
 		ADD (heapindex + 1)
@@ -415,12 +411,129 @@ SR 36 Check2OfAKind
 			ENDSR
 ENDSR
 
+SR 43 CalculateWinner
+	PUSH 300
+	PUSH -1
+	STORE
+	
+	PUSH 200
+	LABEL 44
+		//Check if all scores have been processed
+		DUP
+		PUSH 200
+		SUB
+		PUSH 100
+		RETRIEVE
+		SUB
+		JUMPIF0 45
+	
+		//Check current score
+		DUP
+		RETRIEVE
+		PUSH 300
+		RETRIEVE
+		SUB
+		JUMPIF- 46
+		JUMPIF0 54
+		JUMP 55
+		
+		LABEL 54
+			DUP
+			PUSH 10
+			ADD
+			RETRIEVE
+			PUSH 302
+			RETRIEVE
+			SUB
+			JUMPIF- 46
+			JUMPIF0 56
+			JUMP 55
+			
+			LABEL 56
+				PUSH 12
+				LABEL 57
+					
+		
+		LABEL 55
+			//UpdateWinner
+			DUP
+			RETRIEVE
+			PUSH 300
+			SWAP
+			STORE
+			
+			DUP
+			PUSH 200
+			SUB
+			PUSH 301
+			SWAP
+			STORE
+		
+			//Store Pair Value
+			DUP
+			PUSH 10
+			ADD
+			RETRIEVE
+			CALL 32 - GetValue
+			PUSH 302
+			SWAP
+			STORE
+			
+		//Go on to next player
+		LABEL 46
+			PUSH 1
+			ADD
+			JUMP 44
+		
+	LABEL 45
+	DROP
+ENDSR
 
+SR 47 Output Winner
+	PRINT "Player "
+	PUSH 301
+	RETRIEVE
+	PUSH 1
+	ADD
+	PRINT#
+	" wins with a "
+	PUSH 300
+	RETRIEVE
+	
+	DUP
+	PUSH 4
+	SUB
+	JUMPIF0 48
+	
+	DUP
+	PUSH 3
+	SUB
+	JUMPIF0 49
+	
+	DUP
+	PUSH 1
+	SUB
+	JUMPIF0 50
+	
+	JUMP 51
+	
+	LABEL 48
+		PRINT "flush!"
+		JUMP 52
+	LABEL 49
+		PRINT "three of a kind!"
+		JUMP 52
+	LABEL 50
+		PRINT "pair!"
+		JUMP 52
+	LABEL 51
+		PRINT "high card!"
+		JUMP 52	
+	LABEL 52
+		DROP
+		PRINT /n
+		ENDSR
+ENDSR
 
-5
-2S 3S AH AC AD
-6D 7D JD QD 2D
-7C 4D 4H 7S 7H
-8H 9S JS KS 8C
-KS 9S JS 8H 8C
-4S 9C JS KS 3C
+SR 53 Print "Enter cards seperated by spaces. Each should have a value (2-10, J, Q, K, A) and a suite (C, H, S, D). Example: (2C AH 10D QS 5C)"
+ENDSR
