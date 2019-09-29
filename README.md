@@ -4,6 +4,8 @@ Whitespace poker is program written in whitespace that will read a round of poke
 
 #### The Heap
 Whitespace poker uses a heap to track important values such as the number of players, the current cards each player has etc. See below for a list of uses for each entry in the heap:
+First Header | Second Header
+------------ | -------------
 0     | Player 1 - Card 1
 1     | Player 1 - Card 2
 2     | Player 1 - Card 3
