@@ -16,7 +16,7 @@ Whitespace poker is still a work in progress and some features have not been imp
 * Only Flushes, Three of a Kind, Pairs, and high card hands are evaluated by the program.
 * No logic exists yet for handling ties, so the program can't tell who the winner is when two players have the same value of hand (flush vs flush or high card vs high card for example). This is a WIP that will be addressed soon.
 
-### Implementation
+## Implementation
 The whitespace poker program 
 
 ### The Heap
