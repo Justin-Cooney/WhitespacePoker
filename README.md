@@ -3,7 +3,7 @@
 Whitespace poker is program written in whitespace that will read a round of poker hands and determine which player is the winner.
 
 ### Instructions
-To run the program upload or copy and paste WhiteSpace.ws to the whitelips IDE (https://vii5ard.github.io/whitespace/)
+To run the program upload or copy and paste `WhiteSpace.ws` to the whitelips IDE (https://vii5ard.github.io/whitespace/)
 
 Click the Run button in the corner to execute the program and follow the instructions show in the console.
 
