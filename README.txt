@@ -1,6 +1,6 @@
 ### Whitespace Poker
 
-Whitespace poker is program written in whitespace that will read a round of poker hands and determine which player is the winner.
+White**sp**ace poker is program written in whitespace that will read a round of poker hands and determine which player is the winner.
 
 #### The Heap
 Whitespace poker uses a heap to track important values such as the number of players, the current cards each player has etc. See below for a list of uses for each entry in the heap:
