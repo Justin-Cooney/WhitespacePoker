@@ -26,8 +26,12 @@ First Header | Second Header
 
 First Header | Second Header
 ------------ | -------------
-Content from cell 1 | Content from cell 2
-Content in the first column | Content in the second column
+0 | Player 1 - Card 1
+1 | Player 1 - Card 2
+2 | Player 1 - Card 3
+3 | Player 1 - Card 4
+4 | Player 1 - Card 5
+10 | Player 2 - Card 1
 
 #### Labels
 The program uses labels throughout to create sub-routines and handle flow control. See below for a list of labels and their uses:
