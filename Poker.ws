@@ -1,6 +1,8 @@
 ###BEGINPROGRAM###
  	 	CALLSR_1_READ#OFPLAYERS
 
+ 	 		 	 	CALLSR_53_PrintInstructions
+
  	 	 CALLSR_2_EnterPlayerInfo
 
  	 	  	CALLSR_9_CalculateHands
@@ -582,7 +584,9 @@ DROP   	PUSH_1
  	 		  JUMP_44
 
    	 		 	LABEL_45
+ 
 
+DROP
 	###ENDSUBROUTINE###
 ###SUBROUTINE_47_OutputWinner###
    	 				LABEL_47
@@ -743,5 +747,255 @@ DROP   	PUSH_1
    		 	  LABEL_52
  
 
-DROP
+DROP       	 	 
+	
+  /n
 	###END_ROUTINE###
+###STARTROUTINE_53_PRINTINSTRUCTIONS###
+   		 	 	LABEL_53
+    	   	 	
+	
+  E    		 			 
+	
+  n    			 	  
+	
+  t   		  	 	
+	
+  e    			  	 
+	
+  r     	     
+	
+  _    		   		
+	
+  c   		    	
+	
+  a    			  	 
+	
+  r    		  	  
+	
+  d   			  		
+	
+  s     	     
+	
+  _   			  		
+	
+  s   		  	 	
+	
+  e    			    
+	
+  p   		    	
+	
+  a    			  	 
+	
+  r   		    	
+	
+  a    			 	  
+	
+  t   		  	 	
+	
+  e    		  	  
+	
+  d     	     
+	
+  _    		   	 
+	
+  b    				  	
+	
+  y     	     
+	
+  _   			  		
+	
+  s    			    
+	
+  p   		    	
+	
+  a    		   		
+	
+  c   		  	 	
+	
+  e   			  		
+	
+  s     	 			 
+	
+  .       	 	 
+	
+  /n    	   	 	
+	
+  E   		    	
+	
+  a    		   		
+	
+  c    		 	   
+	
+  h     	     
+	
+  _   			  		
+	
+  s    		 	   
+	
+  h    		 				
+	
+  o    			 	 	
+	
+  u    		 		  
+	
+  l    		  	  
+	
+  d     	     
+	
+  _    		 	   
+	
+  h   		    	
+	
+  a    			 		 
+	
+  v   		  	 	
+	
+  e     	     
+	
+  _   		    	
+	
+  a     	     
+	
+  _    			 		 
+	
+  v   		    	
+	
+  a    		 		  
+	
+  l    			 	 	
+	
+  u   		  	 	
+	
+  e     	     
+	
+  _     	 	   
+	
+  (     		  	 
+	
+  2     	 		 	
+	
+  -     		   	
+	
+  1     		    
+	
+  0     	 		  
+	
+  ,    	  	 	 
+	
+  J     	 		  
+	
+  ,    	 	   	
+	
+  Q     	 		  
+	
+  ,    	  	 		
+	
+  K     	 		  
+	
+  ,    	     	
+	
+  A     	 	  	
+	
+  )     	     
+	
+  _   		    	
+	
+  a    		 			 
+	
+  n    		  	  
+	
+  d     	     
+	
+  _   		    	
+	
+  a     	     
+	
+  _   			  		
+	
+  s    			 	 	
+	
+  u    		 	  	
+	
+  i    			 	  
+	
+  t     	     
+	
+  _     	 	   
+	
+  (    	    		
+	
+  C     	 		  
+	
+  ,    	  	   
+	
+  H     	 		  
+	
+  ,    	 	  		
+	
+  S     	 		  
+	
+  ,    	   	  
+	
+  D     	 	  	
+	
+  )     	 			 
+	
+  .     	     
+	
+  _    	   	 	
+	
+  E    				   
+	
+  x   		    	
+	
+  a    		 		 	
+	
+  m    			    
+	
+  p    		 		  
+	
+  l   		  	 	
+	
+  e     			 	 
+	
+  :     	     
+	
+  _     	 	   
+	
+  (     		  	 
+	
+  2    	    		
+	
+  C     	     
+	
+  _    	     	
+	
+  A    	  	   
+	
+  H     	     
+	
+  _     		   	
+	
+  1     		    
+	
+  0    	   	  
+	
+  D     	     
+	
+  _    	 	   	
+	
+  Q    	 	  		
+	
+  S     	     
+	
+  _     		 	 	
+	
+  5    	    		
+	
+  C     	 	  	
+	
+  )       	 	 
+	
+  /n
+	###ENDSUBROUTINE###
