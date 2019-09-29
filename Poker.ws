@@ -5,6 +5,10 @@
 
  	 	  	CALLSR_9_CalculateHands
 
+ 	 	 	 		CALLSR_43_CalculateWinner
+
+ 	 	 				CALLSR_47_OutputWinner
+
 
 
 ###ENDPROGRAM######STARTROUTINE_0_PrintEnterNumberOfPlayers###
@@ -547,3 +551,197 @@ DROP   	PUSH_1
 
 
 	###END_SUBROUTINE###
+###SUBROUTINE_43_CalculateWinner###
+   	 	 		LABEL_43
+   	  	 		  PUSH_300
+  		PUSH_-1
+		 STORE   		  	   PUSH_200
+
+   	 		  LABEL_44
+ 
+ DUP   		  	   PUSH_200
+	  	SUB   		  	  PUSH_100
+			RETRIEVE	  	SUB
+	  	 		 	JUMPIF0_45
+ 
+ DUP			RETRIEVE   	  	 		  PUSH_300
+			RETRIEVE	  	SUB
+		 	 			 JUMPIF-_46
+ 
+ DUP			RETRIEVE   	  	 		  PUSH_300
+ 
+	SWAP		 STORE 
+ DUP   		  	   PUSH_200
+	  	SUB   	  	 		 	PUSH_301
+ 
+	SWAP		 STORE
+   	 			 LABEL_46
+   	PUSH_1
+	   ADD
+ 
+ 	 		  JUMP_44
+
+   	 		 	LABEL_45
+
+	###ENDSUBROUTINE###
+###SUBROUTINE_47_OutputWinner###
+   	 				LABEL_47
+    	 	    
+	
+  P    		 		  
+	
+  l   		    	
+	
+  a    				  	
+	
+  y   		  	 	
+	
+  e    			  	 
+	
+  r     	     
+	
+  _   	  	 		 	PUSH_301
+			RETRIEVE   	PUSH_1
+	   ADD	
+ 	PRINT#     	     
+	
+  _    			 			
+	
+  w    		 	  	
+	
+  i    		 			 
+	
+  n   			  		
+	
+  s     	     
+	
+  _    			 			
+	
+  w    		 	  	
+	
+  i    			 	  
+	
+  t    		 	   
+	
+  h     	     
+	
+  _   		    	
+	
+  a     	     
+	
+  _   	  	 		  PUSH_300
+			RETRIEVE 
+ DUP   	  PUSH_4
+	  	SUB
+	  		    JUMPIF0_48
+ 
+ DUP   		PUSH_3
+	  	SUB
+	  		   	JUMPIF0_49
+ 
+ DUP   	PUSH_1
+	  	SUB
+	  		  	 JUMPIF0_50
+
+ 
+ 		  		JUMP_51
+
+   		    LABEL_48
+    		  		 
+	
+  f    		 		  
+	
+  l    			 	 	
+	
+  u   			  		
+	
+  s    		 	   
+	
+  h     	    	
+	
+  !
+ 
+ 		 	  JUMP_52
+
+   		   	LABEL_49
+    			 	  
+	
+  t    		 	   
+	
+  h    			  	 
+	
+  r   		  	 	
+	
+  e   		  	 	
+	
+  e     	     
+	
+  _    		 				
+	
+  o    		  		 
+	
+  f     	     
+	
+  _   		    	
+	
+  a     	     
+	
+  _    		 	 		
+	
+  k    		 	  	
+	
+  i    		 			 
+	
+  n    		  	  
+	
+  d     	    	
+	
+  !
+ 
+ 		 	  JUMP_52
+
+   		  	 LABEL_50
+    			    
+	
+  p   		    	
+	
+  a    		 	  	
+	
+  i    			  	 
+	
+  r     	    	
+	
+  !
+ 
+ 		 	  JUMP_52
+
+   		  		LABEL_51
+    		 	   
+	
+  h    		 	  	
+	
+  i    		  			
+	
+  g    		 	   
+	
+  h     	     
+	
+  _    		   		
+	
+  c   		    	
+	
+  a    			  	 
+	
+  r    		  	  
+	
+  d     	    	
+	
+  !
+ 
+ 		 	  JUMP_52
+
+   		 	  LABEL_52
+ 
+
+DROP
+	###END_ROUTINE###
