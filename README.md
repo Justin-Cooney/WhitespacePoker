@@ -82,6 +82,7 @@ Label Index | Usage
 53    | SR - PrintInstructions
 
 ### Whitespace Assembly Pseudocode
+```
 	CALL SR 1 - Enter # of Players
 	CALL SR 53 - Print Instructions
 	CALL SR 2 - Get Player Info
@@ -621,3 +622,4 @@ ENDSR
 
 SR 53 Print "Enter cards seperated by spaces. Each should have a value (2-10, J, Q, K, A) and a suite (C, H, S, D). Example: (2C AH 10D QS 5C)"
 ENDSR
+```
