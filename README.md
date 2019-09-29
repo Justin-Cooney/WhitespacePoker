@@ -24,14 +24,26 @@ First Header | Second Header
 300   | Winning Hand
 301   | Winning Player #
 
-First Header | Second Header
+Heap Index | Value
 ------------ | -------------
 0 | Player 1 - Card 1
 1 | Player 1 - Card 2
 2 | Player 1 - Card 3
 3 | Player 1 - Card 4
 4 | Player 1 - Card 5
+... | ...
 10 | Player 2 - Card 1
+... | ...
+100 | # Of Players
+101 | Sub-Routine temporary storage
+102 | Sub-Routine temporary storage
+... | ...
+200 | Player 1 - Hand Value
+... | ...
+209 | Player 10 - Hand Value
+... | ...
+300 | Winning Hand
+301 | Winning Player #
 
 #### Labels
 The program uses labels throughout to create sub-routines and handle flow control. See below for a list of labels and their uses:
