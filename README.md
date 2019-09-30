@@ -29,11 +29,10 @@ Within each interval the first number represents a 2
 
 This method allows us to obtain the number of a card by modulo dividing its value by 13 and allows us to obtain the suit of card by integer dividing its value by 13. For example:
 
-0 % 13 = 0 (2)
-0 / 13 = 0 (Heart)
-
-35 % 13 = 9 (Jack)
-35 / 13 = 2 (Spade)
+* 0 % 13 = 0 (2)
+* 0 / 13 = 0 (Heart)
+* 35 % 13 = 9 (Jack)
+* 35 / 13 = 2 (Spade)
 
 The program will accept user input and translate it into this format, storing each card as a seperate entry in the heap. Sub- routines are then used to evulate the value of each players hand and output the winner.
 
