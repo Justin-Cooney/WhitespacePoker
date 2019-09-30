@@ -20,10 +20,10 @@ Whitespace poker is still a work in progress and some features have not been imp
 The whitespace poker program was written entirely by hand in whitespace. While the program was development an accompanying psuedocode document was maintained to help provide a better visual of the program's logic. The program makes use of a stack for performing calculations, a heap for storing values, and subroutines for segregating logic.
 
 Cards are stored throughout the program as values ranging from 0 - 52. Each interval of 13 represents one suit. For example:
-*0-12  Clubs
-*13-25 Hearts
-*26-38 Spades
-*39-51 Diamonds
+* 0-12  Clubs
+* 13-25 Hearts
+* 26-38 Spades
+* 39-51 Diamonds
 
 Within each interval the first number represents a 2 
 
